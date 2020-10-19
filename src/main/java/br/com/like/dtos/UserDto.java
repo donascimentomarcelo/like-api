@@ -1,5 +1,6 @@
 package br.com.like.dtos;
 
+import br.com.like.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,8 @@ public class UserDto {
 
     private String username;
     private String password;
-    private ClientDto clientDto;
+
+    public User fromEntity() {
+        return new User(null, username, password, null);
+    }
 }

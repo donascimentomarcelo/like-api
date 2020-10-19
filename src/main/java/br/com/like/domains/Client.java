@@ -40,4 +40,18 @@ public class Client {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Client(final Long clientId) {
+        id = clientId;
+    }
+
+    public Client(final String name, final String lastName, final String email, final String cpf, final Set<String> phones, final Set<Integer> profiles, final User user) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.cpf = cpf;
+        this.phones = phones;
+        this.profiles = profiles;
+        this.user = user;
+    }
 }
