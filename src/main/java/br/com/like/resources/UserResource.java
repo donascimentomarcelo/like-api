@@ -6,10 +6,7 @@ import br.com.like.services.UserService;
 import br.com.like.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -27,5 +24,17 @@ public class UserResource {
 
         URI uri = Util.getUri(user.getId());
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping(value = "/findByUsername")
+    public ResponseEntity<User> findByUsername(@RequestParam(value = "username") final String username) {
+        User user = userService.findByUsername(username);
+        return ResponseEntity.ok().body(user);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<User> delete(@PathVariable final Long id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

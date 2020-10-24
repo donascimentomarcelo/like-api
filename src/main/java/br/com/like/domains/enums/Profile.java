@@ -14,7 +14,7 @@ public enum Profile {
     private Integer code;
     private String description;
 
-    public static Profile toEnum(final Integer code) throws IllegalAccessException {
+    public static Profile toEnum(final Integer code) {
 
         if (code == null) {
             return null;
@@ -26,6 +26,6 @@ public enum Profile {
             }
         }
 
-        throw new IllegalAccessException(Constants.INVALID_CODE + code);
+        return null;
     }
 }
