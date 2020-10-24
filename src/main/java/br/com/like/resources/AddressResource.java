@@ -6,10 +6,7 @@ import br.com.like.services.AddressService;
 import br.com.like.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -27,5 +24,12 @@ public class AddressResource {
 
         URI uri = Util.getUri(address.getId());
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody final AddressDto dto, final Long id) {
+        addressService.update(dto.fromEntity(), id);
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -26,4 +26,10 @@ public class ClientServiceImpl implements ClientService {
     public Client create(final Client client) {
         return clientRepository.save(client);
     }
+
+    @Override
+    public void update(Client client, Long id) {
+        client.setId(id);
+        clientRepository.save(client);
+    }
 }
