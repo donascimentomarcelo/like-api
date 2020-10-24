@@ -8,4 +8,6 @@ public interface ClientService {
     Client findByCpf(final String cpf);
 
     Client create(final Client client);
+
+    void update(Client client, Long id);
 }

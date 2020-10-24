@@ -1,7 +1,5 @@
 package br.com.like.dtos;
 
-import br.com.like.annotations.CpfValidation;
-import br.com.like.annotations.EmailValidation;
 import br.com.like.domains.Client;
 import br.com.like.domains.User;
 import lombok.AllArgsConstructor;
@@ -18,8 +16,6 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@CpfValidation
-@EmailValidation
 public class ClientDto {
 
     @NotNull(message = "Nome obrigatório")
@@ -39,7 +35,7 @@ public class ClientDto {
     private Long userId;
 
     public Client fromEntity() {
-        final User user = new User(userId);
-        return new Client(name, lastName, email, cpf, phones, profiles, user);
+        final User user = new User(getUserId());
+        return new Client(getName(), getLastName(), getEmail(), getCpf(), getPhones(), user);
     }
 }
