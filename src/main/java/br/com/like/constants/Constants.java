@@ -25,4 +25,6 @@ public class Constants {
     public static final String ROLE_CLIENTE = "ROLE_CLIENTE";
 
     public static final String INVALID_CODE = "Código inválido: ";
+
+    public static final String CATEGORY_NOT_FOUND = "Categoria não encontrada!";
 }
