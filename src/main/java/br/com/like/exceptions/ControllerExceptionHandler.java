@@ -1,6 +1,7 @@
 package br.com.like.exceptions;
 
 import br.com.like.constants.Constants;
+import br.com.like.exceptions.models.ObjectNotFoundException;
 import br.com.like.exceptions.models.StandardError;
 import br.com.like.exceptions.models.ValidationError;
 import org.springframework.http.HttpStatus;
@@ -23,5 +24,11 @@ public class ControllerExceptionHandler {
                     .forEach(value -> error.addError(value.getField(), value.getDefaultMessage()));
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException exception, HttpServletRequest request) {
+        StandardError error = new StandardError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 }
