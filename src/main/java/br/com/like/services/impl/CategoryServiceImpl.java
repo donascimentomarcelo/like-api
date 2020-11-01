@@ -4,6 +4,7 @@ import br.com.like.constants.Constants;
 import br.com.like.domains.Category;
 import br.com.like.exceptions.models.ObjectNotFoundException;
 import br.com.like.repositories.CategoryRepository;
+import br.com.like.repositories.ProductRepository;
 import br.com.like.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public Category create(final Category category) {
@@ -47,5 +51,11 @@ public class CategoryServiceImpl implements CategoryService {
     public Page<Category> findPage(final Integer page, final Integer linesPerPage, final String orderBy, final String direction) {
         final PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return categoryRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public void associateProduct(final Category category) {
+        categoryRepository.save(category);
+        productRepository.saveAll(category.getProducts());
     }
 }

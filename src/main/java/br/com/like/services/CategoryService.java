@@ -15,4 +15,6 @@ public interface CategoryService {
     List<Category> findAll();
 
     Page<Category> findPage(final Integer page, final Integer linesPerPage, final String orderBy, final String direction);
+
+    void associateProduct(final Category category);
 }

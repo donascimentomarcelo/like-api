@@ -1,12 +1,15 @@
 package br.com.like.dtos;
 
 import br.com.like.domains.Category;
+import br.com.like.domains.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,10 +17,21 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class CategoryDto {
 
-    @NotNull(message = "Nome obrigatório")
+    @NotNull(message = "Nome da categoria obrigatório")
     private String name;
+    private List<Product> products = new ArrayList<>();
 
     public Category fromEntity() {
         return new Category(null, getName(), null);
+    }
+
+    public Category joinProduct(final Long id) {
+        final Category category = new Category(id, getName(), getProducts());
+        category.getProducts()
+                .stream()
+                .forEach(product -> {
+                   product.getCategories().add(category);
+                });
+        return category;
     }
 }

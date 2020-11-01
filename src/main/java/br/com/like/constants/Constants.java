@@ -27,4 +27,5 @@ public class Constants {
     public static final String INVALID_CODE = "Código inválido: ";
 
     public static final String CATEGORY_NOT_FOUND = "Categoria não encontrada!";
+    public static final String PRODUCT_NOT_FOUND = "Produto não encontrada!";
 }

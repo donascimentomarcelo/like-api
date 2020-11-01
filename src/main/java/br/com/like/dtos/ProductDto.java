@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ProductDto {
 
-    @NotNull(message = "Nome obrigatório")
+    @NotNull(message = "Nome do produto obrigatório")
     private String name;
     @NotNull(message = "Preço obrigatório")
     private Double price;

@@ -56,4 +56,11 @@ public class CategoryResource {
         Page<Category> categories = categoryService.findPage(page, linesPerPage, orderBy, direction);
         return ResponseEntity.ok().body(categories);
     }
+
+    @PutMapping(value = "/associateProduct/{id}")
+    public ResponseEntity<?> associateProduct(@Valid @RequestBody final CategoryDto dto, @PathVariable final Long id) {
+        categoryService.associateProduct(dto.joinProduct(id));
+
+        return ResponseEntity.noContent().build();
+    }
 }
