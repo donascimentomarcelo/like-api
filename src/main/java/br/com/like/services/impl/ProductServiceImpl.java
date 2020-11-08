@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -38,7 +39,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        return productRepository.findAll();
+        final List<Product> products = productRepository.findAll();
+        return applyDiscountAtProductList(products);
+    }
+
+    private List<Product> applyDiscountAtProductList(final List<Product> products) {
+        return products.stream()
+                .map(product -> {
+                    product.setOldPrice(product.applyDiscount());
+                    return product;
+                })
+                .collect(Collectors.toList());
     }
 
     @Override

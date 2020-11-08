@@ -28,4 +28,7 @@ public class Constants {
 
     public static final String CATEGORY_NOT_FOUND = "Categoria não encontrada!";
     public static final String PRODUCT_NOT_FOUND = "Produto não encontrada!";
+
+    public static final Integer ONE_HUNDRED = 100;
+    public static final Integer ZERO = 0;
 }

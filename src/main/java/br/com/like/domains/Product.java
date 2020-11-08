@@ -1,5 +1,6 @@
 package br.com.like.domains;
 
+import br.com.like.constants.Constants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,10 @@ public class Product {
     private Long id;
     private String name;
     private Double price;
+    private String description;
+    @Transient
+    private Double oldPrice;
+    private Integer discount;
 
     @JsonIgnore
     @ManyToMany
@@ -33,4 +38,10 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private List<Category> categories = new ArrayList<>();
+
+    public Double applyDiscount() {
+        return getDiscount() != null ?
+                (getPrice() / Constants.ONE_HUNDRED) * getDiscount() :
+                null;
+    }
 }

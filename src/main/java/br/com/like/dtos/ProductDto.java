@@ -18,8 +18,13 @@ public class ProductDto {
     private String name;
     @NotNull(message = "Preço obrigatório")
     private Double price;
+    @NotNull(message = "Descrição obrigatório")
+    private String description;
+
+    private Double oldPrice;
+    private Integer discount;
 
     public Product fromEntity() {
-        return new Product(null, getName(), getPrice(), null);
+        return new Product(null, getName(), getPrice(), getDescription(), null, getDiscount(), null);
     }
 }
