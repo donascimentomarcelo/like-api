@@ -16,6 +16,6 @@ public class UserDto {
     private String password;
 
     public User fromEntity() {
-        return new User(null, username, password, null);
+        return new User(getUsername(), getPassword());
     }
 }
