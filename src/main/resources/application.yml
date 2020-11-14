@@ -13,4 +13,4 @@ spring:
       ddl-auto: update
 jwt:
   secret: __L1k3
-  expiration: 60000
+  expiration: 60000000
