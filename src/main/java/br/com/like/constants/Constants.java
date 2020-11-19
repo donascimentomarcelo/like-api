@@ -6,10 +6,12 @@ public class Constants {
 
     public static final String CPF = "Cpf";
     public static final String EMAIL = "Email";
+    public static final String USERNAME = "username";
     public static final String ZIPCODE = "zipcode";
 
     public static final String CPF_INVALID = "Invalid Cpf";
     public static final String EMAIL_UNAVALIBLE = "This email has been used";
+    public static final String USERNAME_UNAVALIBLE = "This username has been used";
     public static final String EMAIL_UNALTERABLE= "Esse e-mail deve ser igual ao e-mail cadastrado";
     public static final String CPF_UNAVALIBLE = "This cpf has been used";
     public static final String ZIPCODE_INVALID = "Zipcode invalid";

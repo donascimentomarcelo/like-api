@@ -1,5 +1,6 @@
 package br.com.like.dtos;
 
+import br.com.like.annotations.UsernameValidation;
 import br.com.like.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@UsernameValidation
 public class UserDto {
 
     private String username;
