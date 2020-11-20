@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,7 +16,10 @@ import lombok.Setter;
 @UsernameValidation
 public class UserDto {
 
+    @NotNull(message = "O campo não pode ser nulo!")
     private String username;
+
+    @NotNull(message = "O campo não pode ser nulo!")
     private String password;
 
     public User fromEntity() {

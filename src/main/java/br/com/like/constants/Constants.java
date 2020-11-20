@@ -9,12 +9,12 @@ public class Constants {
     public static final String USERNAME = "username";
     public static final String ZIPCODE = "zipcode";
 
-    public static final String CPF_INVALID = "Invalid Cpf";
-    public static final String EMAIL_UNAVALIBLE = "This email has been used";
-    public static final String USERNAME_UNAVALIBLE = "This username has been used";
+    public static final String CPF_INVALID = "CPF Inválido!";
+    public static final String EMAIL_UNAVALIBLE = "Esse e-mail está sendo usado!";
+    public static final String USERNAME_UNAVALIBLE = "Esse username está sendo usado!";
     public static final String EMAIL_UNALTERABLE= "Esse e-mail deve ser igual ao e-mail cadastrado";
-    public static final String CPF_UNAVALIBLE = "This cpf has been used";
-    public static final String ZIPCODE_INVALID = "Zipcode invalid";
+    public static final String CPF_UNAVALIBLE = "Esse CPF está sendo usado!";
+    public static final String ZIPCODE_INVALID = "CEP Inválido!";
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
