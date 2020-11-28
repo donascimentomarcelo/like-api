@@ -8,6 +8,7 @@ public class Constants {
     public static final String EMAIL = "Email";
     public static final String USERNAME = "username";
     public static final String ZIPCODE = "zipcode";
+    public static final String CREATE = "create";
 
     public static final String CPF_INVALID = "CPF Inválido!";
     public static final String EMAIL_UNAVALIBLE = "Esse e-mail está sendo usado!";

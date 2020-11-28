@@ -44,4 +44,11 @@ public class Product {
                 (getPrice() / Constants.ONE_HUNDRED) * getDiscount() :
                 null;
     }
+
+    public Product(final String name, final Double price, final String description, final Integer discount) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.discount = discount;
+    }
 }
