@@ -24,21 +24,27 @@ public class DBServiceImpl implements DBService {
 
     @Override
     public void instantiateTestDatabase() throws ParseException {
-        Category c1 = new Category("Decoracao");
-        Category c2 = new Category("Escritorio");
-        Category c3 = new Category("Cama mesa e banho");
-        Category c4 = new Category("Eletronicos");
+        productRepository.deleteAll();
+        categoryRepository.deleteAll();
 
-        Product p1 = new Product("Computador", 2000.00, desc, 20);
-        Product p2 = new Product("Impressora", 800.00, desc, 10);
-        Product p3 = new Product("Mouse", 80.00, desc, 80);
-        Product p4 = new Product("Mesa de escritorio", 300.00, desc, 40);
-        Product p5 = new Product("Toalha", 30.00, desc, 13);
-        Product p6 = new Product("Colcha", 200.00, desc, 4);
-        Product p7 = new Product("TV true color", 1200.00, desc, 7);
-        Product p8 = new Product("Rocadeira", 800.00, desc, 20);
-        Product p9 = new Product("Abajour", 100.00, desc, 20);
-        Product p0 = new Product("Pendente", 180.00, desc, 10);
+        Category c1 = new Category(1L, "Decoracao");
+        Category c2 = new Category(2L,"Escritorio");
+        Category c3 = new Category(3L,"Cama mesa e banho");
+        Category c4 = new Category(4L, "Eletronicos");
+
+        Product p1 = new Product(1L, "Computador", 2000.00, desc, 20);
+        Product p2 = new Product(2L,"Impressora", 800.00, desc, 10);
+        Product p3 = new Product(3L,"Mouse", 80.00, desc, 80);
+        Product p4 = new Product(4L,"Mesa de escritorio", 300.00, desc, 40);
+        Product p5 = new Product(5L,"Toalha", 30.00, desc, 13);
+        Product p6 = new Product(6L,"Colcha", 200.00, desc, 4);
+        Product p7 = new Product(7L,"TV true color", 1200.00, desc, 7);
+        Product p8 = new Product(8L,"Rocadeira", 800.00, desc, 20);
+        Product p9 = new Product(9L,"Abajour", 100.00, desc, 20);
+        Product p0 = new Product(10L,"Pendente", 180.00, desc, 10);
+
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0));
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
 
         c1.getProducts().addAll(Arrays.asList(p1, p2, p3));
         c2.getProducts().addAll(Arrays.asList(p4, p5, p6));
@@ -59,8 +65,7 @@ public class DBServiceImpl implements DBService {
 
         p0.getCategories().add(c4);
 
-
-        categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0));
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
     }
 }

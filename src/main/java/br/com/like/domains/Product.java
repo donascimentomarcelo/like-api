@@ -45,6 +45,14 @@ public class Product {
                 null;
     }
 
+    public Product(final Long id, final String name, final Double price, final String description, final Integer discount) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.discount = discount;
+    }
+
     public Product(final String name, final Double price, final String description, final Integer discount) {
         this.name = name;
         this.price = price;
