@@ -32,6 +32,8 @@ public class DBServiceImpl implements DBService {
         Category c3 = new Category(3L,"Cama mesa e banho");
         Category c4 = new Category(4L, "Eletronicos");
 
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
+
         Product p1 = new Product(1L, "Computador", 2000.00, desc, 20);
         Product p2 = new Product(2L,"Impressora", 800.00, desc, 10);
         Product p3 = new Product(3L,"Mouse", 80.00, desc, 80);
@@ -41,31 +43,16 @@ public class DBServiceImpl implements DBService {
         Product p7 = new Product(7L,"TV true color", 1200.00, desc, 7);
         Product p8 = new Product(8L,"Rocadeira", 800.00, desc, 20);
         Product p9 = new Product(9L,"Abajour", 100.00, desc, 20);
-        Product p0 = new Product(10L,"Pendente", 180.00, desc, 10);
-
-        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0));
-        categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
+        Product p10 = new Product(10L,"Pendente", 180.00, desc, 10);
+        Product p11 = new Product(11L,"Cama", 190.00, desc, 5);
+        Product p12 = new Product(12L,"Travesseiro", 280.00, desc, 14);
 
         c1.getProducts().addAll(Arrays.asList(p1, p2, p3));
         c2.getProducts().addAll(Arrays.asList(p4, p5, p6));
         c3.getProducts().addAll(Arrays.asList(p7, p8, p9));
-        c4.getProducts().addAll(Arrays.asList(p0, p1, p2));
+        c4.getProducts().addAll(Arrays.asList(p10, p11, p12));
 
-        p1.getCategories().addAll(Arrays.asList(c1, c4));
-        p2.getCategories().addAll(Arrays.asList(c1, c4));
-        p3.getCategories().add(c1);
-
-        p4.getCategories().add(c2);
-        p5.getCategories().add(c2);
-        p6.getCategories().add(c2);
-
-        p7.getCategories().add(c3);
-        p8.getCategories().add(c3);
-        p9.getCategories().add(c3);
-
-        p0.getCategories().add(c4);
-
-        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p0));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12));
         categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
     }
 }

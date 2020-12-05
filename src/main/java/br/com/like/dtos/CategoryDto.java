@@ -26,12 +26,6 @@ public class CategoryDto {
     }
 
     public Category joinProduct(final Long id) {
-        final Category category = new Category(id, getName(), getProducts());
-        category.getProducts()
-                .stream()
-                .forEach(product -> {
-                   product.getCategories().add(category);
-                });
-        return category;
+        return new Category(id, getName(), getProducts());
     }
 }

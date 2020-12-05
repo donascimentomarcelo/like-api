@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -31,13 +29,9 @@ public class Product {
     private Integer discount;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "PRODUCT_CATEGORY",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private List<Category> categories = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Double applyDiscount() {
         return getDiscount() != null ?
