@@ -39,12 +39,13 @@ public class Product {
                 null;
     }
 
-    public Product(final Long id, final String name, final Double price, final String description, final Integer discount) {
+    public Product(final Long id, final String name, final Double price, final String description, final Integer discount, final Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.discount = discount;
+        this.category = category;
     }
 
     public Product(final String name, final Double price, final String description, final Integer discount) {

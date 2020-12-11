@@ -21,8 +21,11 @@ public class ProductDto {
     @NotNull(message = "Descrição obrigatório")
     private String description;
 
-    private Double oldPrice;
     private Integer discount;
+
+    public static ProductDto fromDto(final Product product) {
+        return new ProductDto(product.getName(), product.getPrice(), product.getDescription(), product.getDiscount());
+    }
 
     public Product fromEntity() {
         return new Product(null, getName(), getPrice(), getDescription(), null, getDiscount(), null);
