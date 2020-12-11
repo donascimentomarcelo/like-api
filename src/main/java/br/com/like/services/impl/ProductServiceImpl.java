@@ -57,4 +57,9 @@ public class ProductServiceImpl implements ProductService {
         final PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return productRepository.findAll(pageRequest);
     }
+
+    @Override
+    public List<Product> productsByCategory(final Long id) {
+        return productRepository.findProductsByCategory(id);
+    }
 }

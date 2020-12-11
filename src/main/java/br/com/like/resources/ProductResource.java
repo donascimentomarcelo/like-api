@@ -34,10 +34,16 @@ public class ProductResource {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Product> findOne(@PathVariable final Long id) {
+    @GetMapping(value = "/{id}/details")
+    public ResponseEntity<ProductDto> findOne(@PathVariable final Long id) {
         Product product = productService.findOne(id);
-        return ResponseEntity.ok().body(product);
+        return ResponseEntity.ok().body(ProductDto.fromDto(product));
+    }
+
+    @GetMapping(value = "/{id}/productsByCategory")
+    public ResponseEntity<List<Product>> findProductsByCategory(@PathVariable final Long id) {
+        List<Product> products = productService.productsByCategory(id);
+        return ResponseEntity.ok().body(products);
     }
 
     @GetMapping

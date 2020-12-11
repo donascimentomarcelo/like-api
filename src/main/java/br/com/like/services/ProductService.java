@@ -15,4 +15,6 @@ public interface ProductService {
     List<Product> findAll();
 
     Page<Product> findPage(final Integer page, final Integer linesPerPage, final String orderBy, final String direction);
+
+    List<Product> productsByCategory(final Long id);
 }
