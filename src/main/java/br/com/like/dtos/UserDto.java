@@ -22,6 +22,12 @@ public class UserDto {
     @NotNull(message = "O campo não pode ser nulo!")
     private String password;
 
+    public static UserDto fromDto(final User user) {
+        return user != null ?
+            new UserDto(user.getUsername(), user.getPassword()) :
+            null;
+    }
+
     public User fromEntity() {
         return new User(getUsername(), getPassword());
     }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,12 +24,13 @@ public class ProductDto {
     private String description;
 
     private Integer discount;
+    private List<CommentDto> comments = new ArrayList<>();
 
     public static ProductDto fromDto(final Product product) {
-        return new ProductDto(product.getName(), product.getPrice(), product.getDescription(), product.getDiscount());
+        return new ProductDto(product.getName(), product.getPrice(), product.getDescription(), product.getDiscount(), CommentDto.convertList(product.getComments()));
     }
 
     public Product fromEntity() {
-        return new Product(null, getName(), getPrice(), getDescription(), null, getDiscount(), null);
+        return new Product(null, getName(), getPrice(), getDescription(), null, getDiscount(), null, null);
     }
 }
