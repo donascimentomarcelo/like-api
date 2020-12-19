@@ -24,13 +24,22 @@ public class ProductDto {
     private String description;
 
     private Integer discount;
+
     private List<CommentDto> comments = new ArrayList<>();
 
+    private List<QuestionDto> questions = new ArrayList<>();
+
     public static ProductDto fromDto(final Product product) {
-        return new ProductDto(product.getName(), product.getPrice(), product.getDescription(), product.getDiscount(), CommentDto.convertList(product.getComments()));
+        return new ProductDto(
+                product.getName(),
+                product.getPrice(),
+                product.getDescription(),
+                product.getDiscount(),
+                CommentDto.convertList(product.getComments()),
+                QuestionDto.convertList(product.getQuestions()));
     }
 
     public Product fromEntity() {
-        return new Product(null, getName(), getPrice(), getDescription(), null, getDiscount(), null, null);
+        return new Product(null, getName(), getPrice(), getDescription(),  getDiscount(), null);
     }
 }

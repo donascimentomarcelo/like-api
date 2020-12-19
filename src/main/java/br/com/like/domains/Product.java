@@ -38,6 +38,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "product")
+    private List<Question> questions = new ArrayList<>();
+
     public Double applyDiscount() {
         return getDiscount() != null ?
                 (getPrice() / Constants.ONE_HUNDRED) * getDiscount() :

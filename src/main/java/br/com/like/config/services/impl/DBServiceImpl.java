@@ -2,9 +2,13 @@ package br.com.like.config.services.impl;
 
 import br.com.like.config.services.DBService;
 import br.com.like.domains.Category;
+import br.com.like.domains.Comment;
 import br.com.like.domains.Product;
+import br.com.like.domains.Question;
 import br.com.like.repositories.CategoryRepository;
+import br.com.like.repositories.CommentRepository;
 import br.com.like.repositories.ProductRepository;
+import br.com.like.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +26,16 @@ public class DBServiceImpl implements DBService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
     @Override
     public void instantiateTestDatabase() throws ParseException {
+        questionRepository.deleteAll();
+        commentRepository.deleteAll();
         productRepository.deleteAll();
         categoryRepository.deleteAll();
 
@@ -47,6 +59,17 @@ public class DBServiceImpl implements DBService {
         Product p11 = new Product(11L,"Cama", 190.00, desc, 5, c4);
         Product p12 = new Product(12L,"Travesseiro", 280.00, desc, 14, c4);
 
+        Comment cm1 = new Comment(1L, 5, "Good", desc, null, p12);
+        Comment cm2 = new Comment(2L, 2, "Bad", desc, null, p12);
+
+        Question q1 = new Question(1L, desc, null, p12);
+        Question q2 = new Question(2L, desc, null, p12);
+        Question q3 = new Question(3L, desc, null, p12);
+
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12));
+
+        commentRepository.saveAll(Arrays.asList(cm1, cm2));
+
+        questionRepository.saveAll(Arrays.asList(q1, q2, q3));
     }
 }
