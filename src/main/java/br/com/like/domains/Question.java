@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,4 +33,14 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+
+    @OneToMany(mappedBy = "question")
+    private List<Reply> reply = new ArrayList<>();
+
+    public Question(final Long id, final String description, final Product product) {
+        this.id = id;
+        this.description = description;
+        this.product = product;
+    }
 }
