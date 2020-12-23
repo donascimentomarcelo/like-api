@@ -1,14 +1,8 @@
 package br.com.like.config.services.impl;
 
 import br.com.like.config.services.DBService;
-import br.com.like.domains.Category;
-import br.com.like.domains.Comment;
-import br.com.like.domains.Product;
-import br.com.like.domains.Question;
-import br.com.like.repositories.CategoryRepository;
-import br.com.like.repositories.CommentRepository;
-import br.com.like.repositories.ProductRepository;
-import br.com.like.repositories.QuestionRepository;
+import br.com.like.domains.*;
+import br.com.like.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +13,7 @@ import java.util.Arrays;
 public class DBServiceImpl implements DBService {
 
     private final String desc = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+    private final String reply = "Lorem Ipsum has been the industry's standard";
 
     @Autowired
     private ProductRepository productRepository;
@@ -32,8 +27,12 @@ public class DBServiceImpl implements DBService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private ReplyRepository replyRepository;
+
     @Override
     public void instantiateTestDatabase() throws ParseException {
+        replyRepository.deleteAll();
         questionRepository.deleteAll();
         commentRepository.deleteAll();
         productRepository.deleteAll();
@@ -62,14 +61,22 @@ public class DBServiceImpl implements DBService {
         Comment cm1 = new Comment(1L, 5, "Good", desc, null, p12);
         Comment cm2 = new Comment(2L, 2, "Bad", desc, null, p12);
 
-        Question q1 = new Question(1L, desc, null, p12);
-        Question q2 = new Question(2L, desc, null, p12);
-        Question q3 = new Question(3L, desc, null, p12);
+        Question q1 = new Question(1L, desc, p12);
+        Question q2 = new Question(2L, desc, p12);
+        Question q3 = new Question(3L, desc, p12);
+
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12));
 
         commentRepository.saveAll(Arrays.asList(cm1, cm2));
 
         questionRepository.saveAll(Arrays.asList(q1, q2, q3));
+
+        Reply r1 = new Reply(1L, reply, q1);
+        Reply r2 = new Reply(2L, reply, q2);
+        Reply r3 = new Reply(3L, reply, q3);
+
+        replyRepository.saveAll(Arrays.asList(r1, r2, r3));
+
     }
 }
