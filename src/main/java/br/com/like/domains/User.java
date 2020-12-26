@@ -41,6 +41,13 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
+    public User(final Long id, final String username, final String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        addProfile(Profile.CLIENT);
+    }
+
     public User(final String username, final String password) {
         this.username = username;
         this.password = password;

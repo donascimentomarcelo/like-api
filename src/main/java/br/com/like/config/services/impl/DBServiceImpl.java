@@ -3,11 +3,14 @@ package br.com.like.config.services.impl;
 import br.com.like.config.services.DBService;
 import br.com.like.domains.*;
 import br.com.like.repositories.*;
+import br.com.like.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class DBServiceImpl implements DBService {
@@ -30,6 +33,15 @@ public class DBServiceImpl implements DBService {
     @Autowired
     private ReplyRepository replyRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ClientRepository clientRepository;
+
     @Override
     public void instantiateTestDatabase() throws ParseException {
         replyRepository.deleteAll();
@@ -37,6 +49,17 @@ public class DBServiceImpl implements DBService {
         commentRepository.deleteAll();
         productRepository.deleteAll();
         categoryRepository.deleteAll();
+        userRepository.deleteAll();
+        clientRepository.deleteAll();
+
+        User u1 = new User(1L, "crane", "1234");
+        User u1c = userService.create(u1);
+
+        Set<String> phones = new HashSet<String>();
+        phones.add("982525252");
+        phones.add("34558585");
+        Client cl1 = new Client(1L, "Kyle", "Crane", "marcelo.laravel@gmail.com", "12312312312", phones, u1c);
+        clientRepository.save(cl1);
 
         Category c1 = new Category(1L, "Decoracao");
         Category c2 = new Category(2L,"Escritorio");

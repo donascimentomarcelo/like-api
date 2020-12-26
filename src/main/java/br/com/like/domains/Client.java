@@ -43,6 +43,16 @@ public class Client {
         id = clientId;
     }
 
+    public Client(final Long id, final String name, final String lastName, final String email, final String cpf, final Set<String> phones, final User user) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.cpf = cpf;
+        this.phones = phones;
+        this.user = user;
+    }
+
     public Client(final String name, final String lastName, final String email, final String cpf, final Set<String> phones, final User user) {
         this.name = name;
         this.lastName = lastName;

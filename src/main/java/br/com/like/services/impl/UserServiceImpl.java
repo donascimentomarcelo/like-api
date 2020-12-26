@@ -1,6 +1,8 @@
 package br.com.like.services.impl;
 
+import br.com.like.constants.Constants;
 import br.com.like.domains.User;
+import br.com.like.exceptions.models.ObjectNotFoundException;
 import br.com.like.repositories.UserRepository;
 import br.com.like.security.models.UserSpringSecurity;
 import br.com.like.services.UserService;
@@ -32,7 +34,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(final String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username)
+                    .orElseThrow(() -> new ObjectNotFoundException(Constants.USER_NOT_FOUND));
     }
 
     @Override
