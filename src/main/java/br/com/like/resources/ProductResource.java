@@ -46,6 +46,14 @@ public class ProductResource {
         return ResponseEntity.ok().body(products);
     }
 
+    @GetMapping(value = "/findByProductsOrCategories")
+    public ResponseEntity<List<Product>> findByProductsOrCategories(
+            @RequestParam(value = "text")String text
+    ) {
+        List<Product> products = productService.findByProductsOrCategories(text);
+        return ResponseEntity.ok().body(products);
+    }
+
     @GetMapping
     public ResponseEntity<List<Product>> findAll() {
         List<Product> categories = productService.findAll();

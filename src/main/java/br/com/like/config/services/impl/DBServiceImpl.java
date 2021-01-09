@@ -83,6 +83,12 @@ public class DBServiceImpl implements DBService {
 
         Comment cm1 = new Comment(1L, 5, "Good", desc, null, p12);
         Comment cm2 = new Comment(2L, 2, "Bad", desc, null, p12);
+        Comment cm3 = new Comment(3L, 5, "Good", desc, null, p12);
+        Comment cm4 = new Comment(4L, 2, "Bad", desc, null, p11);
+        Comment cm5 = new Comment(5L, 5, "Good", desc, null, p10);
+        Comment cm6 = new Comment(6L, 2, "Bad", desc, null, p9);
+        Comment cm7 = new Comment(7L, 5, "Good", desc, null, p5);
+        Comment cm8 = new Comment(8L, 2, "Bad", desc, null, p1);
 
         Question q1 = new Question(1L, desc, p12);
         Question q2 = new Question(2L, desc, p12);
@@ -91,7 +97,7 @@ public class DBServiceImpl implements DBService {
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12));
 
-        commentRepository.saveAll(Arrays.asList(cm1, cm2));
+        commentRepository.saveAll(Arrays.asList(cm1, cm2, cm3, cm4, cm5, cm6, cm7, cm8));
 
         questionRepository.saveAll(Arrays.asList(q1, q2, q3));
 
