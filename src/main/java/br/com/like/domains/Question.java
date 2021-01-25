@@ -27,6 +27,7 @@ public class Question {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @JsonIgnore
@@ -42,5 +43,13 @@ public class Question {
         this.id = id;
         this.description = description;
         this.product = product;
+    }
+
+    public Question(final String description) {
+        this.description = description;
+    }
+
+    public Question Question(final String description) {
+        return new Question(description);
     }
 }

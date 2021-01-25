@@ -16,11 +16,20 @@ import java.util.stream.Collectors;
 public class QuestionDto {
 
     private String description;
+    private Long productId;
 
     public static List<QuestionDto> convertList(final List<Question> questions) {
         return questions
                 .stream()
                 .map(question -> new QuestionDto(question.getDescription()))
                 .collect(Collectors.toList());
+    }
+
+    public QuestionDto(final String description) {
+        this.description = description;
+    }
+
+    public Question fromEntity() {
+        return new Question(description);
     }
 }

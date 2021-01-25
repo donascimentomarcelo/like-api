@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface QuestionService {
     List<Question> findByProduct(final Long productId);
+
+    Question save(final Question question);
 }

@@ -62,4 +62,8 @@ public class Product {
         this.description = description;
         this.discount = discount;
     }
+
+    public Product(final Long id) {
+        this.id = id;
+    }
 }

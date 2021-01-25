@@ -33,4 +33,12 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    public Comment(final Integer star, final String title, final String description, final User user, final Product product) {
+        this.star = star;
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.product = product;
+    }
 }

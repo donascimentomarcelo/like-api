@@ -18,4 +18,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findByProduct(final Long productId) {
         return questionRepository.findByProductId(productId);
     }
+
+    @Override
+    public Question save(final Question question) {
+        return questionRepository.save(question);
+    }
 }
