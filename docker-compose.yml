@@ -1,0 +1,37 @@
+
+version: '3'
+services:
+  database-postgres:
+    image: postgres:13.1-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_ROOT_PASSWORD=1234
+      - POSTGRES_DB=like
+      - POSTGRES_USER=crane
+      - POSTGRES_PASSWORD=1234
+    networks:
+      - my_network
+
+  like:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: like:latest
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database-postgres:5432/like
+      - SPRING_DATASOURCE_USERNAME=crane
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - database-postgres
+    networks:
+      - my_network
+    links:
+      - database-postgres
+
+networks:
+  my_network:
+    driver: bridge
