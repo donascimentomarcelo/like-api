@@ -24,7 +24,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://database-postgres:5432/like
       - SPRING_DATASOURCE_USERNAME=crane
       - SPRING_DATASOURCE_PASSWORD=1234
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
     depends_on:
       - database-postgres
     networks:
